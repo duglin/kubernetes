@@ -468,13 +468,6 @@ func ClusterRoles() []rbacv1.ClusterRole {
 			},
 		},
 		{
-			ObjectMeta: metav1.ObjectMeta{Name: "system:aws-cloud-provider"},
-			Rules: []rbacv1.PolicyRule{
-				rbacv1helpers.NewRule("get", "patch").Groups(legacyGroup).Resources("nodes").RuleOrDie(),
-				eventsRule(),
-			},
-		},
-		{
 			// a role making the csrapprover controller approve a node client CSR
 			ObjectMeta: metav1.ObjectMeta{Name: "system:certificates.k8s.io:certificatesigningrequests:nodeclient"},
 			Rules: []rbacv1.PolicyRule{
